@@ -1,0 +1,64 @@
+@model List<Chef>;
+@using Chef_N_Dishes.Models;
+@using System.Collections.Generic;
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Registration!</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="col-sm-9 " style="background-color:lightgrey;">
+                 <h1> Check out some roster of Chefs !</h1>
+                <div class="nav navbar-nav navbar-left">
+               
+                <p>Chefs |<a href="dishes">Dish</a></p>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                <a href="/newChef">Add a Chef</a>
+
+            </div>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Chef Name</th>
+                        <th>Age</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        foreach (var x in Model)
+                        {
+                            <tr>
+                                <th>@x.FirstName @x.LastName</th>
+
+                                <th>@{
+                                        var age = DateTime.Today.Year - x.Birthday.Year;
+                                    }@age</th>
+                                <th> @x.DishList.Count</th>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

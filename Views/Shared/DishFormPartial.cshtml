@@ -1,0 +1,38 @@
+@model Dish;
+@using Chef_N_Dishes.Models;
+
+<h1>Add a Dish</h1>
+<form asp-action="NewDish">
+
+    <span asp-validation-for="DishName"></span><br>
+    <label asp-for="DishName"></label>
+    <input class="form-control input-lg" asp-for="DishName">
+    <span asp-validation-for="Calories"></span><br>
+    <label asp-for="Calories"></label>
+    <input class="form-control input-lg" asp-for="Calories">
+    <span asp-validation-for="Tastiness"></span><br>
+    <label asp-for="Tastiness"></label>
+    <Select asp-for="Tastiness">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </Select>
+    <label> Chef's Name:</label>
+    <Select asp-for="ChefId">
+        @foreach (var i in @ViewBag.AllchefList)
+        {
+            <option value="@i.ChefId">@i.FirstName @i.LastName</option>
+        }
+    </Select>
+
+
+    <span asp-validation-for="Description"></span><br>
+    <label asp-for="Description"></label>
+    <input class="form-control input-lg" asp-for="Description">
+
+    <button class="btn btn-primary">Add Dish</button>
+    <a href="/home">Home</a>
+
+</form>
